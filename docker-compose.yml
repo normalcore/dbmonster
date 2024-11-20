@@ -1,0 +1,61 @@
+services:
+  app:
+    build: .
+    ports:
+    - 3000:3000
+    depends_on:
+      - mariadb
+      - mongo
+      - postgres
+      - redis
+      - cassandra
+      - cockroachdb
+      - couchdb
+      
+  mongo:
+    image: mongo
+    ports:
+    - 27017:27017
+    env_file:
+      - .env
+
+  postgres:
+    image: postgres
+    ports:
+    - 5432:5432
+    env_file:
+      - .env
+
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+
+  cassandra:
+    image: cassandra
+    ports:
+      - 9042:9042
+    env_file:
+      - .env
+
+  mariadb:
+    image: mariadb
+    ports:
+      - 3306:3306
+    env_file:
+      - .env  
+
+  cockroachdb:
+    image: cockroachdb/cockroach
+    command: start-single-node --insecure
+    ports:
+      - 26257:26257
+    env_file:
+      - .env
+
+  couchdb:
+    image: couchdb
+    ports:
+      - 5984:5984
+    env_file:
+      - .env
