@@ -29,6 +29,20 @@ Then, just wait for the databases to start up. Once they're up, you can connect 
 - Docker
 - Docker Compose
 
+### Ports
+
+For the databases to work properly, make sure you have the following ports available on your machine:
+
+- **MongoDB**: 27017
+- **PostgreSQL**: 5432
+- **Redis**: 6379
+- **Cassandra**: 9042
+- **MariaDB**: 3306
+- **CockroachDB**: 26257
+- **CouchDB**: 5984
+
+These ports are mapped from the containers to your local machine. If any of these ports are already in use, you'll need to stop the service or change the ports in the `docker-compose.yml` file.
+
 ## Known Issues
 
 - **Cassandra** sometimes throws an `ECONNREFUSED` error.  
